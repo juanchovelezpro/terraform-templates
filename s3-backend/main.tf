@@ -7,10 +7,10 @@ resource "aws_s3_bucket" "bucket_backend" {
 }
 
 resource "aws_s3_bucket_public_access_block" "bucket_block_access" {
-  bucket = aws_s3_bucket.bucket_backend.id
-  block_public_acls = true
-  block_public_policy = true
-  ignore_public_acls = true
+  bucket                  = aws_s3_bucket.bucket_backend.id
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
   restrict_public_buckets = true
 }
 
@@ -34,10 +34,10 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "bucket_encryption
 }
 
 resource "aws_dynamodb_table" "backend_lock" {
-  name = var.dynamo_table_name
+  name           = var.dynamo_table_name
   write_capacity = 5
-  read_capacity = 5
-  hash_key = "LockID"
+  read_capacity  = 5
+  hash_key       = "LockID"
 
   attribute {
     name = "LockID"
